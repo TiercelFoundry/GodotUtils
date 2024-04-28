@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Title>Godot Utils - Tiercel Foundry</Title>
@@ -13,6 +13,7 @@
     <RepositoryUrl>https://github.com/TiercelFoundry/Utils</RepositoryUrl>
     <Copyright>Tiercel Foundry</Copyright>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageId>TiercelFoundry.$(AssemblyName)</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
