@@ -6,7 +6,7 @@ namespace TiercelFoundry.GodotUtils;
 public static class NodeExtensions
 {
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
-    public static List<T> FindNodesOfType<T>(this Node node, List<T> result = null) where T : Node
+    public static List<T> FindNodesOfType<T>(this Node node, List<T> result = null) where T : class
     {
         result ??= new List<T>();
 
