@@ -9,6 +9,11 @@ public static class VectorExtensions
         return new Vector2(vector.X, vector.Y);
     }
 
+    public static Vector2 Vector2XZ(this Vector3 vector)
+    {
+        return new Vector2(vector.X, vector.Z);
+    }
+
     public static Vector3 Midpoint(this Vector3 a, Vector3 b)
     {
         return ((a - b) * 0.5f) + b;
