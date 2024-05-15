@@ -38,4 +38,18 @@ public static class NodeExtensions
 
         return null;
     }
+
+    public static T? FindSiblingOfType<T>(this Node node) where T : Node
+    {
+        var siblings = node.GetParent().GetChildren();
+        for (int i = 0; i < siblings.Count; i++) 
+        { 
+            if (siblings[i] is T found)
+            {
+                return found;
+            }
+        }
+
+        return null;
+    }
 }
