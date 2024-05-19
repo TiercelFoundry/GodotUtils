@@ -1,5 +1,6 @@
 ﻿using Godot;
 using Godot.Collections;
+using System.Text.Json.Serialization;
 
 namespace TiercelFoundry.GodotUtils;
 
@@ -51,5 +52,15 @@ public static class NodeExtensions
         }
 
         return null;
+    }
+
+    public static bool TryRemoveChild(this Node node, Node child)
+    {
+        var inTree = node.IsAncestorOf(child);
+        if (inTree)
+        {
+            node.RemoveChild(child);
+        }
+        return inTree;
     }
 }
