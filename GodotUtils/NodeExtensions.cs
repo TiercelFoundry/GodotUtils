@@ -1,5 +1,6 @@
 ﻿using Godot;
 using Godot.Collections;
+using System.Runtime.CompilerServices;
 using System.Text.Json.Serialization;
 
 namespace TiercelFoundry.GodotUtils;
