@@ -72,3 +72,10 @@ public static class VectorExtensions
     }
     #endregion
 }
+
+[Icon("./img/custom_tag.svg")]
+[GlobalClass]
+public partial class TaggableNode : Node
+{
+
+}
