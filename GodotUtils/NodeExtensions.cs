@@ -38,4 +38,12 @@ public static class NodeExtensions
 
         return null;
     }
+
+    public static void RemoveAllChildren(this Node node)
+    {
+        for (int i = 0;i < node.GetChildren().Count; i++)
+        {
+            node.RemoveChild(node.GetChild(i));
+        }
+    }
 }
