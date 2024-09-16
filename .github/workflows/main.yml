@@ -40,7 +40,7 @@ jobs:
     - name: Upload NuGet package to GitHub
       uses: actions/upload-artifact@v4
       with:
-        name: GodotUtils
+        name: GodotUtils-${{ steps.gitversion.outputs.SemVer }}
         path: ./GodotUtils/bin/Release/ 
         
   release:
@@ -53,7 +53,7 @@ jobs:
     - name: Download nuget package artifact
       uses: actions/download-artifact@v4
       with:
-        name: GodotUtils
+        name: GodotUtils-${{ steps.gitversion.outputs.SemVer }}
     - name: Prep packages
       run: dotnet nuget add source --username GrahameGW --password ${{ secrets.GH_NUGET_PACKAGE_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/tiercelfoundry/index.json"
     - name: Push package to GitHub packages 
