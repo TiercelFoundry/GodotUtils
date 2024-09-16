@@ -39,49 +39,49 @@ public static class NodeExtensions
         return null;
     }
 
-    public static T? FindChildWithInterface<T>(this Node node) where T : interface
+    public static T? FindChildWithInterface<T>(this Node node)
     {
         var children = node.GetChildren();
-        for (int i = 0; i<children.Count; i++)
+        for (int i = 0; i < children.Count; i++)
         {
             if (children[i] is T child)
             {
                 return child;
             }
-}   
+        }
+
+        return default(T);
+    }
+
+    public static T? FindSiblingOfType<T>(this Node node) where T : Node
+    {
+        var siblings = node.GetParent().GetChildren();
+        for (int i = 0; i < siblings.Count; i++)
+        {
+            if (siblings[i] is T found)
+            {
+                return found;
+            }
+        }
 
         return null;
     }
 
-    public static T? FindSiblingOfType<T>(this Node node) where T : Node
-{
-    var siblings = node.GetParent().GetChildren();
-    for (int i = 0; i < siblings.Count; i++)
+    public static bool TryRemoveChild(this Node node, Node child)
     {
-        if (siblings[i] is T found)
+        var inTree = node.IsAncestorOf(child);
+        if (inTree)
         {
-            return found;
+            node.RemoveChild(child);
+        }
+        return inTree;
+    }
+
+    public static void RemoveAllChildren(this Node node)
+    {
+        for (int i = 0; i < node.GetChildren().Count; i++)
+        {
+            node.RemoveChild(node.GetChild(i));
         }
     }
-
-    return null;
-}
-
-public static bool TryRemoveChild(this Node node, Node child)
-{
-    var inTree = node.IsAncestorOf(child);
-    if (inTree)
-    {
-        node.RemoveChild(child);
-    }
-    return inTree;
-}
-
-public static void RemoveAllChildren(this Node node)
-{
-    for (int i = 0; i < node.GetChildren().Count; i++)
-    {
-        node.RemoveChild(node.GetChild(i));
-    }
-}
 }
